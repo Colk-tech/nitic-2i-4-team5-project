@@ -1,14 +1,4 @@
-#include <stdio.h>
-#define FILE_NAME "records.csv"
-
-struct student {
-    int student_id;
-    char family_name[16];
-    char given_name[16];
-    char family_name_reading[32];
-    char given_name_reading[32];
-    char jhs_name[32];
-};
+#include "load.h"
 
 int main(){
     FILE *fp;
@@ -42,6 +32,4 @@ int main(){
         i++;
     }
 
-    printf("\n");
-    fclose( fp );
 }

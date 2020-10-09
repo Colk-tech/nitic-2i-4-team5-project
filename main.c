@@ -1,8 +1,7 @@
 //
 // Created by Manaki ITO on 2020/10/09.
 //
-
-#include <stdio.h>
+#include "main.h"
 
 int ask_mode(void);
 int print_modes(void);
