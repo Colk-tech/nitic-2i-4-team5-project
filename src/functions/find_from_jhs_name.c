@@ -13,9 +13,9 @@ int find_all_students_from_jhs_name(struct student target_table[101], int number
     char given_names[101][16];
     char given_name_readings[101][32];
     char jhs_names[101][32];
-    // =================  変更しない  =================
 
     EXTRACT_ALL_COLUMNS;
+    // =================  変更しない  =================
 
     return 0;
 }

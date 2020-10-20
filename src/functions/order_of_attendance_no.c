@@ -13,9 +13,9 @@ int order_of_attendance_no(struct student target_table[101], int number_of_stude
     char given_names[101][16];
     char given_name_readings[101][32];
     char jhs_names[101][32];
-    // =================  変更しない  =================
 
     EXTRACT_ALL_COLUMNS;
+    // =================  変更しない  =================
 
     return 0;
 }
