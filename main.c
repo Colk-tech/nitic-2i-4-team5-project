@@ -10,6 +10,7 @@
 int ask_mode(void);
 int print_modes(void);
 int ask_parameter(char message[], char user_input[]);
+int ask_continue(void);
 
 int main(void) {
     int mode;
@@ -27,24 +28,29 @@ int main(void) {
     mode = ask_mode();
 
     printf("Mode %d has been selected.\n", mode);
-    switch (mode) {
-        case 1:
-            order_of_attendance_no(current_table, number_of_students);
+    while(1) {
+        switch (mode) {
+            case 1:
+                order_of_attendance_no(current_table, number_of_students);
+                break;
+            case 2:
+                order_of_name(current_table, number_of_students);
+                break;
+            case 3:
+                find_name_from_number(current_table, number_of_students, (int) ask_parameter(MESSAGE_3, user_input));
+                break;
+            case 4:
+                ask_parameter(MESSAGE_4, user_input);
+                find_number_from_name(current_table, number_of_students, user_input);
+                break;
+            case 5:
+                ask_parameter(MESSAGE_5, user_input);
+                find_all_students_from_jhs_name(current_table, number_of_students, user_input);
+                break;
+        }
+        if (!ask_continue()) {
             break;
-        case 2:
-            order_of_name(current_table, number_of_students);
-            break;
-        case 3:
-            find_name_from_number(current_table, number_of_students, (int)ask_parameter(MESSAGE_3, user_input));
-            break;
-        case 4:
-            ask_parameter(MESSAGE_4, user_input);
-            find_number_from_name(current_table, number_of_students, user_input);
-            break;
-        case 5:
-            ask_parameter(MESSAGE_5, user_input);
-            find_all_students_from_jhs_name(current_table, number_of_students, user_input);
-            break;
+        };
     }
 
     return 0;
@@ -80,6 +86,27 @@ int ask_mode(void) {
          }
          break;
      }
+
+    return user_input;
+}
+
+int ask_continue(void) {
+    int user_input;
+
+    printf("\n");
+    printf("Do you want to continue?\n");
+
+    while(1) {
+        scanf("%d", &user_input);
+        printf("\n");
+        if (!(0 <= user_input && user_input <= 1)) {
+            printf("Invalid number has been passed. Please specify within 0 to 1.\n");
+            continue;
+        }
+        break;
+    }
+
+    printf("Bye\n");
 
     return user_input;
 }
