@@ -1,7 +1,6 @@
 //
 // Created by Manaki ITO on 2020/10/09.
 //
-
 struct student {
     int student_id;
     char family_name[16];
