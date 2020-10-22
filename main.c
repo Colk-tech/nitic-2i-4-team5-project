@@ -25,10 +25,10 @@ int main(void) {
     number_of_students = load_csv(current_table);
     printf("Loading csv file succeeded!\n");
 
-    mode = ask_mode();
-
-    printf("Mode %d has been selected.\n", mode);
     while(1) {
+        mode = ask_mode();
+
+        printf("Mode %d has been selected.\n", mode);
         switch (mode) {
             case 1:
                 order_of_attendance_no(current_table, number_of_students);
@@ -49,6 +49,7 @@ int main(void) {
                 break;
         }
         if (!ask_continue()) {
+            printf("bye");
             break;
         };
     }
@@ -94,7 +95,7 @@ int ask_continue(void) {
     int user_input;
 
     printf("\n");
-    printf("Do you want to continue?\n");
+    printf("Do you want to continue? (0 / 1)\n");
 
     while(1) {
         scanf("%d", &user_input);
@@ -105,8 +106,6 @@ int ask_continue(void) {
         }
         break;
     }
-
-    printf("Bye\n");
 
     return user_input;
 }

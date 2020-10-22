@@ -53,3 +53,6 @@ dkms.conf
 
 #MacOS
 .DS_Store
+
+#compressed files
+.zip
