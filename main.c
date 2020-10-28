@@ -3,8 +3,8 @@
 //
 #include "main.h"
 
-#define MESSAGE_3 "Input number of the student\n"
-#define MESSAGE_4 "Input name in KATAKANA LEAVE SPACE BETWEEN LASTNAME AND SURNAME\n"
+#define MESSAGE_3 "Input number of the student.\n"
+#define MESSAGE_4 "Input name in KATAKANA AND DO NOT LEAVE SPACE BETWEEN LASTNAME AND SURNAME.\n"
 #define MESSAGE_5 "Input J.H.S. name in KANJI.\n"
 
 int ask_mode(void);
@@ -40,16 +40,16 @@ int main(void) {
                 order_of_name(current_table, number_of_students);
                 break;
             case 3:
+                ask_parameter(MESSAGE_4, user_input);
+                find_number_from_name(current_table, number_of_students, user_input);
+                break;
+            case 4:
                 printf("\n");
                 printf("%s", MESSAGE_3);
                 scanf("%d", &user_input_int);
                 if (find_name_from_number(current_table, number_of_students, user_input_int) != 0) {
                     printf("Student not found or error occurred.\n");
                 }
-                break;
-            case 4:
-                ask_parameter(MESSAGE_4, user_input);
-                find_number_from_name(current_table, number_of_students, user_input);
                 break;
             case 5:
                 ask_parameter(MESSAGE_5, user_input);

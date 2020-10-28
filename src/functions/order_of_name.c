@@ -22,6 +22,7 @@ int order_of_name(struct student target_table[101], int number_of_students){
 
     EXTRACT_ALL_COLUMNS;
     // =================  変更しない  =================
+    printf("\n");
 
     char name_reading_combined[101][64];
     char sorted[101][64];
