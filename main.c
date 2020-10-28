@@ -26,6 +26,8 @@ int main(void) {
     printf("Loading csv file succeeded!\n");
 
     while(1) {
+        fflush(stdout);
+
         mode = ask_mode();
 
         printf("Mode %d has been selected.\n", mode);
@@ -45,7 +47,9 @@ int main(void) {
                 break;
             case 5:
                 ask_parameter(MESSAGE_5, user_input);
-                find_all_students_from_jhs_name(current_table, number_of_students, user_input);
+                if (find_all_students_from_jhs_name(current_table, number_of_students, user_input) != 0) {
+                    printf("Student not found or error occurred.\n");
+                }
                 break;
             case 6:
                 update_record();
@@ -118,8 +122,7 @@ int ask_continue(void) {
 
 int ask_parameter(char message[], char user_input[]) {
     printf("\n");
-    printf("%s\n", message);
-    printf("\n");
+    printf("%s", message);
 
     scanf("%s", user_input);
 
