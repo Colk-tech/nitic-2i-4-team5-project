@@ -1,6 +1,3 @@
-//
-// Created by Manaki ITO on 2020/10/14.
-//
 #include <stdio.h>
 #include "../macros/macros.c"
 

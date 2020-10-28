@@ -1,18 +1,11 @@
+//
+// Created by Manaki ITO on 2020/10/14.
+//
 #include <stdio.h>
 #include <string.h>
 #include "../macros/macros.c"
 #include "../functions/csv/add.c"
 
-
-int add_element(char target[256], char element[], int is_last){
-    strcat(target, element);
-
-    if (!(is_last)) {
-        strcat(target, ",");
-    }
-
-    return 0;
-}
 
 int update_record(void){
     char target[256];
