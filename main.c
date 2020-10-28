@@ -17,6 +17,7 @@ int main(void) {
     struct student current_table[101];
     int number_of_students;
     char user_input[64];
+    int user_input_int;
 
     printf("================================================\n");
     printf("     Welcome to the Student Database System     \n");
@@ -39,7 +40,12 @@ int main(void) {
                 order_of_name(current_table, number_of_students);
                 break;
             case 3:
-                find_name_from_number(current_table, number_of_students, (int) ask_parameter(MESSAGE_3, user_input));
+                printf("\n");
+                printf("%s", MESSAGE_3);
+                scanf("%d", &user_input_int);
+                if (find_name_from_number(current_table, number_of_students, user_input_int) != 0) {
+                    printf("Student not found or error occurred.\n");
+                }
                 break;
             case 4:
                 ask_parameter(MESSAGE_4, user_input);
