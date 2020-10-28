@@ -47,6 +47,11 @@ int main(void) {
                 ask_parameter(MESSAGE_5, user_input);
                 find_all_students_from_jhs_name(current_table, number_of_students, user_input);
                 break;
+            case 6:
+                update_record();
+                number_of_students = load_csv(current_table);
+                printf("Update table succeeded!\n");
+                break;
         }
         if (!ask_continue()) {
             printf("bye");
@@ -63,6 +68,7 @@ int print_modes(void) {
     printf("3) Show the student number of the student of specified name\n");
     printf("4) Show the student name of the student of specified number\n");
     printf("5) Show all the student from J.H.S. of specified name\n");
+    printf("6) Add new student entry and refresh current table\n");
 
     return 0;
 }
@@ -81,8 +87,8 @@ int ask_mode(void) {
      while(1) {
          scanf("%d", &user_input);
          printf("\n");
-         if (!(1 <= user_input && user_input <= 5)) {
-             printf("Invalid number has been passed. Please specify within 1 to 5.\n");
+         if (!(1 <= user_input && user_input <= 6)) {
+             printf("Invalid number has been passed. Please specify within 1 to 6.\n");
              continue;
          }
          break;

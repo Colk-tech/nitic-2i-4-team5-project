@@ -9,3 +9,4 @@
 #include "src/functions/find_number_from_name.c"
 #include "src/functions/find_name_from_number.c"
 #include "src/functions/find_from_jhs_name.c"
+#include "src/functions/update_record.c"
