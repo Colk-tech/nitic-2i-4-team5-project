@@ -3,8 +3,8 @@
 //
 #include "main.h"
 
-#define MESSAGE_3 "Input number of the student.\n"
-#define MESSAGE_4 "Input name in KATAKANA AND DO NOT LEAVE SPACE BETWEEN LASTNAME AND SURNAME.\n"
+#define MESSAGE_3 "Input name in KATAKANA AND DO NOT LEAVE SPACE BETWEEN LASTNAME AND SURNAME.\n"
+#define MESSAGE_4 "Input number of the student.\n"
 #define MESSAGE_5 "Input J.H.S. name in KANJI.\n"
 
 int ask_mode(void);
@@ -25,6 +25,7 @@ int main(void) {
 
     number_of_students = load_csv(current_table);
     printf("Loading csv file succeeded!\n");
+    fprintf(stderr, "WARNING: Character code of your terminal and 'records.csv' MUST BE UTF-8.\n");
 
     while(1) {
         fflush(stdout);
@@ -40,12 +41,12 @@ int main(void) {
                 order_of_name(current_table, number_of_students);
                 break;
             case 3:
-                ask_parameter(MESSAGE_4, user_input);
+                ask_parameter(MESSAGE_3, user_input);
                 find_number_from_name(current_table, number_of_students, user_input);
                 break;
             case 4:
                 printf("\n");
-                printf("%s", MESSAGE_3);
+                printf("%s", MESSAGE_4);
                 scanf("%d", &user_input_int);
                 if (find_name_from_number(current_table, number_of_students, user_input_int) != 0) {
                     printf("Student not found or error occurred.\n");
@@ -64,7 +65,7 @@ int main(void) {
                 break;
         }
         if (!ask_continue()) {
-            printf("bye");
+            printf("Bye\n");
             break;
         };
     }
@@ -86,8 +87,6 @@ int print_modes(void) {
 int ask_mode(void) {
     int user_input;
 
-    printf("\n");
-    printf("Desire Mode?\n");
     printf("\n");
 
     print_modes();

@@ -45,14 +45,3 @@ int extract_jhs_names(struct student table[101], char jhs_names[101][32], int nu
     }
     return 0;
 }
-
-/*
-struct student {
-    int studet_id;
-    char family_name[16];
-    char given_name[16];
-    char family_name_reading[32];
-    char given_name_reading[32];
-    char jhs_name[32];
-};
-*/

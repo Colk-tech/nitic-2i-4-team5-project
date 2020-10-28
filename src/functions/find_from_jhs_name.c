@@ -15,7 +15,6 @@ int find_all_students_from_jhs_name(struct student target_table[101], int number
     // =================  変更しない  =================
     int count = 0;
 
-
     for (int i = 0; i<number_of_students; i++) {
       if(strcmp(target_table[i].jhs_name,query)==0){
           printf("No.%d: %s %s (%s %s) [%s]\n",
