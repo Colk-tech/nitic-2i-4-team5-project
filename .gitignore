@@ -56,3 +56,6 @@ dkms.conf
 
 #compressed files
 .zip
+
+# report files
+report_ws/
