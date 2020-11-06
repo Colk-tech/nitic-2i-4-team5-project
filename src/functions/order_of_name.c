@@ -6,9 +6,9 @@
 #include <string.h>
 #include "../macros/macros.c"
 
-#define pr printf("%s",
+int sort_name(char names[101][64], int number, char sorted[101][64]);
 
-int sort(char name_reading_combined[101][64], char sorted[101][64]);
+int operation_count = 1;
 
 
 int order_of_name(struct student target_table[101], int number_of_students){
@@ -22,8 +22,8 @@ int order_of_name(struct student target_table[101], int number_of_students){
 
     EXTRACT_ALL_COLUMNS;
     // =================  変更しない  =================
-    printf("\n");
 
+    // 名前の結合作業を行う
     char name_reading_combined[101][64];
     char sorted[101][64];
 
@@ -32,42 +32,67 @@ int order_of_name(struct student target_table[101], int number_of_students){
         strcat(name_reading_combined[i], given_name_readings[i]);
     }
 
-    sort(name_reading_combined, sorted);
+    int exit_code = sort_name(name_reading_combined, number_of_students, sorted);
 
-    for(int i = 0; i < number_of_students; i++) {
-        for(int j = 0; j < number_of_students; j++) {
-            if (!(strcmp(sorted[i], name_reading_combined[j]))) {
-                printf("%s: No.%d %s %s [%s]\n",
-                       sorted[i],
-                       target_table[j].student_id,
-                       target_table[j].family_name,
-                       target_table[j].given_name,
-                       target_table[j].jhs_name
-                );
-                break;
-            }
-        }
+    for (int i = 0; i < number_of_students; i++) {
+        find_number_from_name(target_table, number_of_students, sorted[i]);
     }
 
+    printf("\n");
+
     return 0;
-
 }
 
+int swap(int dist, int src, char target_array[101][64]) {
+    char buffer[64];
 
-int comp(const void *x, const void *y) {
-    return strcmp(*(char**)x, *(char**)y);
+    strcpy(buffer, target_array[dist]);
+    strcpy(target_array[dist], target_array[src]);
+    strcpy(target_array[src], buffer);
+
+    return 0;
 }
 
+int smaller_length(char a[64], char b[64]) {
+    int smaller_string_length;
 
-int sort(char name_reading_combined[101][64], char sorted[101][64]) {
-    memcpy(sorted, name_reading_combined, sizeof(char[101][64]));
+    if (strlen(a) < strlen(b)) {
+        smaller_string_length = strlen(a);
+    } else {
+        smaller_string_length = strlen(b);
+    }
 
-    const long n = sizeof(&sorted) / sizeof (sorted[0]);
+    return smaller_string_length;
+}
 
-    qsort(sorted, n, sizeof(sorted[0]), comp);
+int sort_name(char names[101][64], int number, char sorted[101][64]) {
+    int smaller_string_length;
 
-    for (int i=0 ; i<n ; i++) {
-            puts(sorted[i]);
+    memcpy(sorted, names, sizeof(char[101][64]));
+
+    while (operation_count != 0) {
+        operation_count = 0;
+
+        for (int i = 0; i < (number - 1); i++) {
+            smaller_string_length = smaller_length(sorted[i], sorted[i + 1]);
+
+            for (int m = 0; m < smaller_string_length - 1; m++) {
+
+                if (strcmp(&sorted[i][m], &sorted[i + 1][m]) > 0) {
+                    swap(i, i + 1, sorted);
+                    operation_count += 1;
+                    break;
+                }
+
+                if (strcmp(&sorted[i][m], &sorted[i + 1][m]) < 0) {
+                    break;
+                }
+
+            }
+
         }
+
+    }
+
     return 0;
 }
