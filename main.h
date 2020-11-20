@@ -1,6 +1,7 @@
 //
 // Created by Manaki ITO on 2020/10/09.
 //
+#define FILE_NAME "records.csv"
 #include "src/structs/student.c"
 #include "src/utils/extract_list.c"
 #include "src/functions/csv/load.c"
