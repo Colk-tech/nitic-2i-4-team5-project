@@ -1,5 +1,4 @@
 #include <stdio.h>
-#define FILE_NAME "records.csv"
 
 
 int load_csv(struct student table[101]) {
