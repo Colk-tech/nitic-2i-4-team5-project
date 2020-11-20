@@ -1,6 +1,3 @@
-//
-// Created by Manaki ITO on 2020/10/14.
-//
 #include <stdio.h>
 #include "../structs/student.c"
 #include "../utils/extract_list.c"
